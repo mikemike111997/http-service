@@ -24,7 +24,7 @@ spec:
         language: python
     spec:
       containers:
-      - image: gcr.io/fourth-ability-322319/github.com/mikemike111997/http-service
+      - image: gcr.io/fourth-ability-322319/github.com/mikemike111997/http-service@sha256:1375720a8334d2ab90d8b6bc6f90599454d42e8bdc2bfd89805048ecb2db88fc
         imagePullPolicy: IfNotPresent
         name: http-service
       restartPolicy: Always
