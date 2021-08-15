@@ -1,6 +1,12 @@
-FROM python:3.8-slim-buster
+FROM ubuntu:20.10
+
+RUN apt update
+RUN apt install -y python3
+RUN apt install -y pip
+
 WORKDIR /app
 COPY . .
+
 RUN pip3 install -r requirements.txt
 COPY . .
 

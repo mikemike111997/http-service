@@ -1,0 +1,15 @@
+steps:
+  # build the container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/fourth-ability-322319/gcp-demo:$SHORT_SHA", "."]
+  # push container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["push", "gcr.io/fourth-ability-322319/gcp-demo:$SHORT_SHA"]
+  # deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=k8s/deployment.yaml
+  - --image=gcr.io/fourth-ability-322319/gcp-demo:$SHORT_SHA
+  - --location=europe-central2-a
+  - --cluster=cluster-1

@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
+import socket
 
 
 class HttpGetHandler(BaseHTTPRequestHandler):
@@ -9,7 +10,8 @@ class HttpGetHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write('<html><head><meta charset="utf-8">'.encode())
         self.wfile.write('<title>Simple HTTP-server.</title></head>'.encode())
-        self.wfile.write('<body>HTTP GET-request has been processed.</body></html>'.encode())
+        self.wfile.write(
+            f'<body>HTTP GET-request has been processed from host {socket.gethostname()}.</body></html>'.encode())
 
 
 def run(server_class=HTTPServer, handler_class=HttpGetHandler):
