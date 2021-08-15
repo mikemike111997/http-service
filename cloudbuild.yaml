@@ -13,3 +13,9 @@ steps:
   - --image=gcr.io/fourth-ability-322319/gcp-demo:$SHORT_SHA
   - --location=europe-central2-a
   - --cluster=cluster-1
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+    - run
+    - --filename=k8s/service.yaml
+    - --location=europe-central2-a
+    - --cluster=cluster-1
